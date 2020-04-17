@@ -8,6 +8,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/indexstyle.css">
 		<title>Languages</title>
 	</head>
 	<body>
@@ -25,15 +26,14 @@
 				<tbody>
 					<c:forEach items="${languages}" var="language">
 					<tr>
-						<td><c:out value="${language.name}"/></td>
+						<td><a href="/languages/${language.id}"><c:out value="${language.name}"/></a></td>
 						<td><c:out value="${language.creator}"/></td>
 						<td><c:out value="${language.version}"/></td>
-						<td>			
+						<td class="action">			
 							<form action="/languages/${language.id}" method="post">
 						    <input type="hidden" name="_method" value="delete">
 						    <input class="btn" type="submit" value="Delete">
-							</form> 
-							| <a href="languages/${language.id}/edit">Edit</a>
+							</form> <a href="languages/${language.id}/edit" class="edit">Edit</a>
 						</td>
 					</tr>
 					</c:forEach>
@@ -52,14 +52,14 @@
 			    <p>
 			        <form:label class="label" path="creator">Creator</form:label>
 			        <form:errors class="errormsg" path="creator"/>
-			        <form:textarea class="input" path="creator"/>
+			        <form:input class="input" path="creator"/>
 			    </p>
 			    <p>
 			        <form:label class="label" path="version">Version</form:label>
 			        <form:errors class="errormsg" path="version"/>
 			        <form:input class="input" path="version"/>
 			    </p>
-			    <input type="submit" value="Submit" class="btn"/>
+			    <input type="submit" value="Submit" class="submitbtn"/>
 			</form:form>    
 		</div>
 	</body>

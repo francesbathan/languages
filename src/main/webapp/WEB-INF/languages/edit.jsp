@@ -8,13 +8,19 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/indexstyle.css">
 		<title>Languages</title>
 
 	</head>
 	<body>
 		<div class="container">
+			<form action="/languages/${language.id}" method="post">
+			    <input type="hidden" name="_method" value="delete">
+			    <input class="btn" id="deletebtn" type="submit" value="Delete">
+			</form>
+			<a href="/languages" class="btn">Dashboard</a>
 			<h1>Edit Language</h1>
-			<form:form action="/books/${language.id}" method="put" modelAttribute="language">
+			<form:form action="/languages/${language.id}" method="put" modelAttribute="language">
 			    <input type="hidden" name="_method" value="put">
 			    <p>
 			        <form:label class="label" path="name">Name</form:label>
@@ -31,7 +37,7 @@
 			        <form:errors class="errormsg" path="version"/>
 			        <form:input class="input" path="version"/>
 			    </p>
-			    <input class="btn" type="submit" value="Submit"/>
+			    <input class="submitbtn" type="submit" value="Submit"/>
 			</form:form> 
 		</div>
 	</body>
